@@ -1,7 +1,7 @@
-FROM node:current-alpine
+FROM node:slim
 
 ENV DIR="/clientdata"
-ENV FILENAME="file.txt"
+ENV FILENAME="downloadedfile.txt"
 ENV URL="http://server:3000/download"
 # Additional ENV variables can be added here
 # ENV PORT=3000

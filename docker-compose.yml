@@ -7,6 +7,7 @@ services:
       - teht1network
     volumes:
       - servervol:/serverdata
+    container_name: server
 
   client:
     image: sakuexe/client-image
@@ -14,10 +15,12 @@ services:
       - teht1network
     volumes:
       - clientvol:/clientdata
+    container_name: client
     command: ["sh", "-c", "sleep 5 && node index.js"]
 
 volumes:
   servervol:
+    name: servervol
     driver: local
     driver_opts:
       type: none
@@ -25,6 +28,7 @@ volumes:
       o: bind
 
   clientvol:
+    name: clientvol
     driver: local
     driver_opts:
       type: none
