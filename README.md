@@ -5,7 +5,19 @@ docker build -t sakuexe/client-image ./client
 docker build -t sakuexe/server-image ./server
 ```
 
-### Running the containers
+### Running and stopping the containers with docker-compose (recommended)
+
+this way will use the default values for the environment variables.
+Unless you change the values in the docker-compose.yml file or Dockerfiles.
+
+```bash
+# running
+docker-compose up -d
+# stopping
+docker-compose down
+```
+
+### Running the containers with docker run
 
 ```bash
 # to use the default PORT of 3000
@@ -39,16 +51,4 @@ for the client:
 ```bash
 docker stop server
 docker stop client
-```
-
-### Running and stopping the containers with docker-compose
-
-this way will use the default values for the environment variables.
-Unless you change the values in the docker-compose.yml file or Dockerfiles.
-
-```bash
-# running
-docker-compose up -d
-# stopping
-docker-compose down
 ```
