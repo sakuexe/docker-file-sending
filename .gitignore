@@ -5,5 +5,5 @@
 
 dist/
 
-clientdata/
-serverdata/
+clientdata/*
+serverdata/*
