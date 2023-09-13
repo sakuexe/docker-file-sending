@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  server:
+    image: sakuexe/server-image
+    networks:
+      - teht1network
+    volumes:
+      - servervol:/serverdata
+
+  client:
+    image: sakuexe/client-image
+    networks:
+      - teht1network
+    volumes:
+      - clientvol:/clientdata
+    command: ["sh", "-c", "sleep 5 && node index.js"]
+
+volumes:
+  servervol:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./serverdata
+      o: bind
+
+  clientvol:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./clientdata
+      o: bind
+
+networks:
+  teht1network:
