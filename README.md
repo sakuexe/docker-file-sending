@@ -2,6 +2,10 @@
 
 9.2023 - HAMK Riihimäki - Cloudservices Course
 
+## TODO
+
+- Create automatic scripts for running the containers by themselves.
+
 ### Building the images
 
 ```bash
