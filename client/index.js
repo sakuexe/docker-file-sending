@@ -5,7 +5,8 @@ import checksum from "checksum";
 const saveDirectory = process.env.DIR || "./clientdata";
 const filename = process.env.FILENAME || "fetchedfile.txt";
 const port = process.env.PORT || 3000;
-const url = process.env.URL || `http://localhost:${port}/download`;
+const server = process.env.SERVER || "/download";
+const url = process.env.URL || "http://localhost";
 
 function calculateChecksum(path, sentChecksum) {
   checksum.file(path, (err, sum) => {
@@ -30,4 +31,6 @@ async function saveFileGetChecksum(url, path) {
   calculateChecksum(path, sentChecksum);
 }
 
-saveFileGetChecksum(url, `${saveDirectory}/${filename}`);
+const completeURL = `${url}:${port}${server}`;
+const filePath = `${saveDirectory}/${filename}`;
+saveFileGetChecksum(completeURL, filePath);

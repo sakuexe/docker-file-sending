@@ -5,8 +5,9 @@ import generateFile from "./generatefile.js";
 const app = express();
 const port = process.env.PORT || 3000;
 const filepath = process.env.SAVEPATH || "./serverdata";
+const serverpath = process.env.SERVER || "/download";
 
-app.get("/download", async (req, res) => {
+app.get(serverpath, async (req, res) => {
   const fileName = "randomtext.txt";
   await generateFile(fileName);
 
