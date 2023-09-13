@@ -23,6 +23,25 @@ docker-compose down
 
 ### Running the containers with docker run
 
+1. Create a network for the containers to communicate with each other
+
+```bash
+docker network create teht1network
+```
+
+2. Create a volume for the server to save the files to
+
+```bash
+# to create a volume with the default destination
+docker volume create servervol
+docker volume create clientvol
+# to create a volume with the destination of your choice
+docker volume create -o type=none -o device=[path] -o o=bind servervol
+docker volume create -o type=none -o device=[path] -o o=bind clientvol
+```
+
+3. Run the containers
+
 ```bash
 # to use the default PORT of 3000
 docker run -d --rm --name server --network teht1network sakuexe/server-image

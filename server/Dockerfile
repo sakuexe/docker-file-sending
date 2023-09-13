@@ -8,6 +8,8 @@ ENV SERVER="/download"
 
 WORKDIR /usr/src/app
 
+VOLUME servervol
+
 COPY package*.json ./
 
 RUN npm install
@@ -17,8 +19,6 @@ RUN npm install
 RUN mkdir -p ${SAVEPATH}
 
 COPY . .
-
-VOLUME /serverdata
 
 CMD [ "node", "index.js" ]
 

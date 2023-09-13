@@ -9,10 +9,14 @@ ENV URL="http://server"
 
 WORKDIR /usr/src/app
 
+VOLUME clientvol
+
 COPY package*.json ./
 
 RUN npm install
 
+# Create directory for downloaded files
+# container may crash if directory does not exist
 RUN mkdir -p ${DIR}
 
 COPY . .
