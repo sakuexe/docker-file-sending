@@ -1,3 +1,7 @@
+# Assignment 1 - Docker
+
+9.2023 - HAMK Riihimäki - Cloudservices Course
+
 ### Building the images
 
 ```bash
