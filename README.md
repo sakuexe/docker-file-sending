@@ -6,17 +6,19 @@
 
 - Create automatic scripts for running the containers by themselves.
 
-### Building the images
+### Running and stopping the containers with docker-compose (recommended)
+
+this way will use the default values for the environment variables.
+Unless you change the values in the docker-compose.yml file or Dockerfiles.
+
+1. Building the images
 
 ```bash
 docker build -t sakuexe/client-image ./client
 docker build -t sakuexe/server-image ./server
 ```
 
-### Running and stopping the containers with docker-compose (recommended)
-
-this way will use the default values for the environment variables.
-Unless you change the values in the docker-compose.yml file or Dockerfiles.
+2. Running and stopping the containerso
 
 ```bash
 # running
@@ -25,15 +27,47 @@ docker-compose up -d
 docker-compose down
 ```
 
+### Running the containers with scripts
+
+```bash
+# to run the server
+./runserver.sh
+# to run the client
+./runclient.sh
+# run with custom parameters, available parameters below
+./runserver.sh --debug --port 4321 --mount "$(pwd)/serverdata"
+# to stop the containers
+docker stop server
+```
+
+**Available parameters:**
+
+- --port, -p: the port the server will listen to (default: 3000)
+
+- --mount, -m: the path where the server will save the files (default: /serverdata)
+
+- --network, -n: the amount of characters that the sent file will include (default: teht1network)
+
+- --execute, -e: run the container with the given parameters (skips build and setup)
+
+- --debug, -d: run the container in debug mode (will run the container with -it flag)
+
 ### Running the containers with docker run
 
-1. Create a network for the containers to communicate with each other
+1. Building the images
+
+```bash
+docker build -t sakuexe/client-image ./client
+docker build -t sakuexe/server-image ./server
+```
+
+2. Create a network for the containers to communicate with each other
 
 ```bash
 docker network create teht1network
 ```
 
-2. Create a volume for the server to save the files to
+3. Create a volume for the server to save the files to
 
 ```bash
 # to create a volume with the default destination
@@ -44,7 +78,7 @@ docker volume create -o type=none -o device=[path] -o o=bind servervol
 docker volume create -o type=none -o device=[path] -o o=bind clientvol
 ```
 
-3. Run the containers
+4. Run the containers
 
 ```bash
 # to use the default PORT of 3000
