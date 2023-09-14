@@ -25,6 +25,8 @@ docker build -t sakuexe/server-image ./server
 docker-compose up -d
 # stopping
 docker-compose down
+# remove all volumes
+docker volume rm $(docker volume ls -q --filter dangling=true)
 ```
 
 ### Running the containers with scripts
