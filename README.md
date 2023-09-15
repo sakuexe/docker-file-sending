@@ -1,11 +1,10 @@
 # **Assignment 1 - Docker**
 
-9.2023 - HAMK Riihimäki - Cloudservices Course
+9.2023 - HAMK Riihimäki - Cloud services Course
 
 ### Running and stopping the containers with docker-compose (recommended)
 
-this way will use the default values for the environment variables.
-Unless you change the values in the docker-compose.yml file or Dockerfiles.
+This way the containers will use the default values for the environment variables.
 
 ```bash
 # running and building
@@ -18,7 +17,8 @@ docker-compose down
 docker volume rm $(docker volume ls -q --filter dangling=true)
 ```
 
-Settings for the applications can be changed from the settings.env file.
+These environment variables for the containers can be changed from the settings.env file.
+If you choose to run the containers the recommended way.
 
 ### Running the containers with scripts
 
@@ -84,21 +84,21 @@ docker run -d --rm --name client --network teht1network -e PORT=[port] sakuexe/c
 
 **Available environment variables:**
 
-for both:
+For both:
 
 - PORT: the port the server will listen to (default: 3000)
 - SERVER: the path of the server where file is to be sent (default: /download)
 
-for the server:
+For the server:
 
 - SAVEPATH: the path where the server will save the files (default: /serverdata)
 - CHARACTERS: the amount of characters that the sent file will include (default: 1000)
 
-for the client:
+For the client:
 
 - DIR: the directory where the client will save the files (default: /clientdata)
 - FILENAME: the name of the file that the client will save (default: downloadedfile.txt)
-- URL: the url of the server (default: http://server:3000/download)
+- URL: the URL of the server (default: http://server:3000/download)
 
 ### Stopping the containers
 
