@@ -17,12 +17,14 @@ docker-compose down
 docker volume rm $(docker volume ls -q --filter dangling=true)
 ```
 
-These environment variables for the containers can be changed from the settings.env file.
+These environment variables for the containers can be changed from the `setting.env` file.
 If you choose to run the containers the recommended way.
 
 ### Running the containers with scripts
 
 ```bash
+# give the scripts permissions to execute
+chmod u+x runserver.sh runclient.sh
 # to run the server
 ./runserver.sh
 # to run the client
