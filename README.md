@@ -2,10 +2,6 @@
 
 9.2023 - HAMK Riihimäki - Cloudservices Course
 
-## TODO
-
-- Create automatic scripts for running the containers by themselves.
-
 ### Running and stopping the containers with docker-compose (recommended)
 
 this way will use the default values for the environment variables.
