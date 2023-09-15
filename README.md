@@ -11,23 +11,18 @@
 this way will use the default values for the environment variables.
 Unless you change the values in the docker-compose.yml file or Dockerfiles.
 
-1. Building the images
-
 ```bash
-docker build -t sakuexe/client-image ./client
-docker build -t sakuexe/server-image ./server
-```
-
-2. Running and stopping the containerso
-
-```bash
-# running
-docker-compose up -d
+# running and building
+docker-compose up
+# only building the images
+docker-compose build
 # stopping
 docker-compose down
 # remove all volumes
 docker volume rm $(docker volume ls -q --filter dangling=true)
 ```
+
+Settings for the applications can be changed from the settings.env file.
 
 ### Running the containers with scripts
 

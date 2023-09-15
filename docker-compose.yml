@@ -2,15 +2,30 @@ version: "3"
 
 services:
   server:
+    # build the server image with dockerfile specs
+    # when running docker-compose build
+    # or docker-compose up
+    build:
+      context: ./server
     image: sakuexe/server-image
+    env_file:
+      - settings.env
     networks:
       - teht1network
     volumes:
       - servervol:/serverdata
     container_name: server
+    command: ["sh", "-c", "node index.js"]
 
   client:
+    # build the client image with dockerfile specs
+    # when running docker-compose build
+    # or docker-compose up
+    build:
+      context: ./client
     image: sakuexe/client-image
+    env_file:
+      - settings.env
     networks:
       - teht1network
     volumes:
