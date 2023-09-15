@@ -31,7 +31,12 @@ services:
     volumes:
       - clientvol:/clientdata
     container_name: client
-    command: ["sh", "-c", "sleep 5 && node index.js"]
+    command:
+      [
+        "sh",
+        "-c",
+        "echo 'making sure server is running before continuing' && sleep 5 && node index.js",
+      ]
 
 volumes:
   servervol:
